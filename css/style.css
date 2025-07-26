@@ -1,32 +1,40 @@
 :root {
-  --primary-color: #1abc9c;
-  --secondary-color: #16a085;
+  --primary-color: #2c3e50;
+  --secondary-color: #2980b9;
+  --accent-color: #f8c291;
+  --done-color: #55efc4;
+  --visited-color: #a29bfe;
+  --current-color: #fab1a0;
+  --min-color: #ff7675;
+  --text-dark: #2d3436;
+  --background-light: #fefefe;
 }
+
 * {
-  /* Below is the standard CSS code one should add to get rid of default margins and padding which most of tge HTML elements have */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   user-select: none;
 }
+
 body {
-  position: relative;
+  background-color: var(--background-light);
+  color: var(--text-dark);
   min-height: 100vh;
-  text-align: center;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: space-between;
   align-items: stretch;
 }
 
 /* Title CSS */
 .title {
   background-color: var(--primary-color);
+  color: white;
+  font-size: 1.4em;
+  padding-block: 0.7em;
   text-align: center;
-  font-size: 1.2em;
-  padding-block: 0.5em;
-  color: #fff;
   cursor: pointer;
 }
 
@@ -36,129 +44,128 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.8em;
+  gap: 1em;
   font-size: 16px;
-  min-height: 70px;
-  padding-block: 0.6em;
+  padding: 0.7em 0;
   background-color: var(--secondary-color);
-  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s ease;
 }
+
 .navbar a {
   all: unset;
   cursor: pointer;
-  color: #fff;
-  font-weight: bold;
-  padding: 8px 10px;
-  border-radius: 6px;
-  transition: 0.3s;
-  background-color: #1abc9c;
-}
-.navbar a:hover {
-  background-color: transparent;
-}
-.navbar #menu {
-  width: fit-content;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 8px;
-  background-color: #1abc9c;
   color: white;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  transition: 0.3s;
 }
-.navbar > .icon {
-  display: none;
+
+.navbar a:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
-#menu,
-#random,
-#start {
+
+.navbar #menu {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: white;
   cursor: pointer;
 }
 
-/* Center css */
-.center {
-  margin: 0 auto;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* Added shadow to make page border free */
-  height: 420px;
-  width: 410px;
-  max-height: 731px;
+.navbar > .icon {
+  display: none;
 }
+
+/* Center Box */
+.center {
+  margin: 20px auto;
+  width: 410px;
+  height: 420px;
+  max-height: 731px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 .array {
   display: flex;
-  align-items: flex-start;
-  min-height: 100%;
   height: 100%;
   padding: 1rem;
   flex-direction: row;
-}
-.cell {
-  display: flex;
   align-items: flex-start;
+}
+
+.cell {
   flex: 0.5;
   width: 0.000001%;
   margin: 1px;
-  background-color: #d6d6d6;
-  resize: horizontal;
+  background-color: #e0e0e0;
+  border-radius: 4px;
   position: relative;
-  transition: all 0.4s ease-in;
-}
-.cell.done {
-  background-color: #9cec5b;
-  border-color: #9cec5b;
-  color: white;
-  transition: all 0.4s ease-out;
-}
-.cell.visited {
-  border-color: #6184d8;
-  background-color: #6184d8;
-  color: white;
-  transition: 0.5s;
-}
-.cell.current {
-  border-color: #50c5b7;
-  background-color: #50c5b7;
-  color: white;
-  transition: all 0.4s ease-out;
-}
-.cell.min {
-  background-color: #ff1493;
-  border-color: #ff1493;
-  color: white;
-  transition: all 0.4s ease-out;
+  transition: all 0.3s ease;
 }
 
-/* Footer CSS */
-.fa.fa-heart {
-  color: #eb2c13;
+.cell.done {
+  background-color: var(--done-color);
+  border-color: var(--done-color);
+  color: white;
 }
+
+.cell.visited {
+  background-color: var(--visited-color);
+  border-color: var(--visited-color);
+  color: white;
+}
+
+.cell.current {
+  background-color: var(--current-color);
+  border-color: var(--current-color);
+  color: white;
+}
+
+.cell.min {
+  background-color: var(--min-color);
+  border-color: var(--min-color);
+  color: white;
+}
+
+/* Footer */
 footer {
   text-align: center;
   font-size: 18px;
-  color: #2c3e50;
+  color: var(--text-dark);
   padding: 1.6em;
 }
+
 .footer > p:nth-child(1) {
   margin-bottom: 0.6em;
 }
+
 .link {
   text-decoration: none;
   font-weight: bold;
-  color: #ff5252;
+  color: var(--secondary-color);
   font-size: 20px;
 }
 
+/* Responsive */
 @media screen and (max-width: 600px) {
   .navbar {
-    gap: 0.4em;
+    gap: 0.5em;
   }
   .title {
-    font-size: 17px;
+    font-size: 18px;
   }
-  .navbar *,
-  .navbar a {
+  .navbar a,
+  .navbar * {
     font-size: 14px;
   }
   .footer {
-    font-size: 18px;
+    font-size: 16px;
   }
   a#random {
     order: 4;
@@ -167,6 +174,7 @@ footer {
     order: 5;
   }
 }
+
 @media screen and (max-width: 550px) {
   .center {
     width: 95%;
